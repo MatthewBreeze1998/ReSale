@@ -39,6 +39,6 @@ namespace Could_System_dev_ops.Repo
             return _ReSaleModelList.AsEnumerable<ReSaleModel>();
         }
 
-        
+
     }
 }
