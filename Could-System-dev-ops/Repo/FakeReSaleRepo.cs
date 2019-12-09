@@ -27,6 +27,19 @@ namespace Could_System_dev_ops.Repo
             return ReSale;
         }
 
+        public ReSaleModel Delete(ReSaleModel Resale)
+        {
+
+            _ReSaleModelList.Remove(_ReSaleModelList.FirstOrDefault(x => x.ProductId == Resale.ProductId));
+            return Resale;
+        }
+
+        public ReSaleModel EditReSale(ReSaleModel ReSale)
+        {
+            _ReSaleModelList[_ReSaleModelList.IndexOf(_ReSaleModelList.FirstOrDefault(x => x.ProductId == ReSale.ProductId))] = ReSale;
+            return ReSale;
+        }
+
         public ReSaleModel GetReSale(int id)
         {
             return _ReSaleModelList.FirstOrDefault(x => id == x.ProductId);

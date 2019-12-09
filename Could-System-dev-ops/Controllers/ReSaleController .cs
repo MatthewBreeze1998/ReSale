@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Could_System_dev_ops.Controllers
 {
-    [Route("api/ReSale") ]
+    [Route("api/ReSale")]
     public class ReSaleController : Controller
     {
 
@@ -25,27 +25,51 @@ namespace Could_System_dev_ops.Controllers
         [HttpPost]
         public ActionResult<ReSaleRepo> CreateReSale(ReSaleModel ReSale)
         {
+            if (ReSale == null)
+            {
+                return NotFound();
+            }
             _ReSaleRepo.CreateReSale(ReSale);
-
-            return CreatedAtAction(nameof(getReSale), new { id = ReSale.ProductId}, ReSale);
-
-
+            return CreatedAtAction(nameof(getReSale), new { id = ReSale.ProductId }, ReSale);
         }
+
+        [Route("EditReSale/{ReSale}")]
+        [HttpPost]
+        public ActionResult<ReSaleModel> EditReSale(ReSaleModel Resale)
+        {
+            if (Resale == null)
+            {
+                return NotFound();
+            }
+            _ReSaleRepo.EditReSale(Resale);
+            return Resale;
+        }
+
         [Route("GetReSale/{id}")]
         [HttpGet]
         public ActionResult<ReSaleModel> getReSale(int id)
         {
             ReSaleModel createRaSale = _ReSaleRepo.GetReSale(id);
 
-            if(createRaSale == null)
+            if (createRaSale == null)
             {
                 return NotFound();
             }
 
             return createRaSale;
         }
-        
 
-
+        [Route("DeleteResale/{ReSale}")]
+        [HttpPost]
+        public ActionResult<ReSaleModel> Delete(ReSaleModel ReSale)
+        {
+            if (ReSale == null)
+            {
+                return NotFound();
+            }
+            
+            _ReSaleRepo.Delete(ReSale);
+            return ReSale;
+        }
     }
 }
