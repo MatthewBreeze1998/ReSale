@@ -11,7 +11,7 @@ namespace ReSaletestPackage
     {
         private HttpClient _Client;
         private ReSaleController _reSaleController;
-        private IReSaleService _reSaleService;
+        private ReSaleRepo _reSaleService;
         private List<ReSaleModel> _ReSaleTestData;
 
        public ReSaleControllerTest()
@@ -23,6 +23,8 @@ namespace ReSaletestPackage
         [SetUp]
         public void Setup()
         {
+
+
             _ReSaleTestData = new List<ReSaleModel>
             {
                 new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42, },

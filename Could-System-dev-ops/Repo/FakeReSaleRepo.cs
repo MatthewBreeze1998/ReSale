@@ -11,8 +11,6 @@ namespace Could_System_dev_ops.Repo
     {
 
         private List<ReSaleModel> _ReSaleModelList;
-
-        private List<ProductsModel> _productsList;
         public FakeReSaleRepo()
         {
             _ReSaleModelList = new List<ReSaleModel>()
