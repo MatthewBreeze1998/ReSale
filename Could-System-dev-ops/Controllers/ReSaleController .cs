@@ -44,6 +44,13 @@ namespace Could_System_dev_ops.Controllers
             _ReSaleRepo.EditReSale(Resale);
             return Resale;
         }
+        [Route("AllReSale")]
+        [HttpGet]
+        public IEnumerable<ReSaleModel> GetAllReSale(int? ProductId, Double? CurrentPrice, Double? NewPrice)
+        {
+            IEnumerable<ReSaleModel> All = _ReSaleRepo.GetAllReSale(ProductId, CurrentPrice, NewPrice);
+            return All;
+        }
 
         [Route("GetReSale/{id}")]
         [HttpGet]
