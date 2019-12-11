@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Could_System_dev_ops.Models;
@@ -28,6 +29,14 @@ namespace Could_System_dev_ops
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();
+
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "";
+                    options.Audience = "";
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ReSaleDataBaseContext>(options =>
@@ -52,6 +61,8 @@ namespace Could_System_dev_ops
             }
 
             app.UseHttpsRedirection();
+            //auth middleware during HTTP request
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
