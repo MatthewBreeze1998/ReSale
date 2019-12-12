@@ -34,8 +34,8 @@ namespace Could_System_dev_ops
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "";
-                    options.Audience = "";
+                    options.Authority = "https://localhost:5099";
+                    options.Audience = "ThAmCo-ReSale";
                 });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

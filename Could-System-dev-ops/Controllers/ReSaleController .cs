@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Could_System_dev_ops.Models;
 using Could_System_dev_ops.Repo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Could_System_dev_ops.Controllers
 {
     [Route("api/ReSale")]
+    [ApiController]
+    [Authorize]
     public class ReSaleController : Controller
     {
 
