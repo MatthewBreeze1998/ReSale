@@ -11,7 +11,7 @@ namespace ReSaletestPackage
     {
         private HttpClient _Client;
         private ReSaleController _reSaleController;
-        private ReSaleRepo _reSaleService;
+        private IReSaleRepo _reSaleService;
         private List<ReSaleModel> _ReSaleTestData;
 
        public ReSaleControllerTest()
