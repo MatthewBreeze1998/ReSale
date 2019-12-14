@@ -18,14 +18,14 @@ namespace Could_System_dev_ops.Controllers
 
 
 
-        private ReSaleRepo _ReSaleRepo;
-        public ReSaleController(ReSaleRepo ReSale)
+        private IReSaleRepo _ReSaleRepo;
+        public ReSaleController(IReSaleRepo ReSale)
         {
             _ReSaleRepo = ReSale;
         }
         [Route("CreateReSale/{Resale}")]
         [HttpPost]
-        public ActionResult<ReSaleRepo> CreateReSale(ReSaleModel ReSale)
+        public ActionResult<IReSaleRepo> CreateReSale(ReSaleModel ReSale)
         {
             if (ReSale == null)
             {

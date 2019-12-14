@@ -13,7 +13,6 @@ namespace Could_System_dev_ops.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-
     public class AuthController : ControllerBase
     {
         [HttpGet]

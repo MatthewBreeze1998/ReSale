@@ -35,7 +35,7 @@ namespace Could_System_dev_ops
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:5099";
-                    options.Audience = "ThAmCo-ReSale";
+                    options.Audience = "IReSaleRepositry";
                 });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -44,8 +44,7 @@ namespace Could_System_dev_ops
                 String connection = Configuration.GetConnectionString("UserConnectionString");
                 options.UseSqlServer(connection);
             });
-
-            services.AddSingleton<ReSaleRepo, FakeReSaleRepo>();
+            services.AddSingleton<IReSaleRepo, FakeReSaleRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +64,7 @@ namespace Could_System_dev_ops
             app.UseHttpsRedirection();
             //auth middleware during HTTP request
             app.UseAuthentication();
+
             app.UseMvc();
         }
     }
