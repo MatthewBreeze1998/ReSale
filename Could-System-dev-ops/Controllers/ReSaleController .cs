@@ -13,6 +13,7 @@ namespace Could_System_dev_ops.Controllers
 {
     [Route("api/ReSale")]
     [ApiController]
+    [Authorize]
     public class ReSaleController : Controller
     {
 

@@ -13,7 +13,7 @@ namespace Could_System_dev_ops.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class ValuesController : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -21,7 +21,7 @@ namespace Could_System_dev_ops.Controllers
         {
 
             var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-            var name = User.Claims.FirstOrDefault(C => C.Type == "name")?.Value;
+            var name = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
             var displayName = name ?? userId;
             
             var rand = new Random().Next();

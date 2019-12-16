@@ -35,7 +35,7 @@ namespace Could_System_dev_ops
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:5099";
-                    options.Audience = "IReSaleRepositry";
+                    options.Audience = "ThAmCo-ReSale";
                 });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
