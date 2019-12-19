@@ -26,7 +26,7 @@ namespace Could_System_dev_ops.Controllers
         }
         [Route("CreateReSale/{Resale}")]
         [HttpPost]
-        public ActionResult<IReSaleRepo> CreateReSale(ReSaleModel ReSale)
+        public ActionResult<ReSaleModel> CreateReSale(ReSaleModel ReSale)
         {
             if (ReSale == null)
             {
