@@ -70,7 +70,7 @@ namespace ReSaletestPackage
         [Test]
         public void CreateProduct_InvalidUser_ShouldObject()
         {
-            _reSaleService = new FakeReSaleRepo(null);
+            
 
             Assert.IsNotNull(_reSaleService);
             Assert.IsNotNull(_reSaleController);
