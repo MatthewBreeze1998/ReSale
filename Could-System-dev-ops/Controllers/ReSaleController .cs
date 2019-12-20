@@ -16,9 +16,6 @@ namespace Could_System_dev_ops.Controllers
     [Authorize]
     public class ReSaleController : Controller
     {
-
-
-
         private IReSaleRepo _ReSaleRepo;
         public ReSaleController(IReSaleRepo ReSale)
         {
@@ -49,10 +46,9 @@ namespace Could_System_dev_ops.Controllers
         }
         [Route("AllReSale")]
         [HttpGet]
-        public IEnumerable<ReSaleModel> GetAllReSale(int? ProductId, Double? CurrentPrice, Double? NewPrice)
+        public IEnumerable<ReSaleModel> GetAllReSale()
         {
-            IEnumerable<ReSaleModel> All = _ReSaleRepo.GetAllReSale(ProductId, CurrentPrice, NewPrice);
-            return All;
+            return _ReSaleRepo.GetAllReSale();
         }
 
         [Route("GetReSale/{id}")]

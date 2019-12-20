@@ -28,8 +28,8 @@ namespace ReSaletestPackage
 
             _ReSaleTestData = new List<ReSaleModel>
             {
-                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42, },
-                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4, NewPrice = 9.42, },
+                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42,},
+                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4, NewPrice = 9.42,},
                 new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41, NewPrice = 310.42,}
             };
 

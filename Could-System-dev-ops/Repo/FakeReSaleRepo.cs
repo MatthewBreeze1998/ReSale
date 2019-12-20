@@ -45,7 +45,7 @@ namespace Could_System_dev_ops.Repo
             return _ReSaleModelList.FirstOrDefault(x => id == x.ProductId);
         }
 
-        public IEnumerable<ReSaleModel> GetAllReSale(int? ProductId, Double? CurrentPrice, Double? NewPrice)
+        public IEnumerable<ReSaleModel> GetAllReSale()
         {
             return _ReSaleModelList.AsEnumerable<ReSaleModel>();
         }

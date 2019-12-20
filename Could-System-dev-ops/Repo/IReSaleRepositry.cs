@@ -14,7 +14,7 @@ namespace Could_System_dev_ops.Repo
 
         ReSaleModel GetReSale(int id);
 
-        IEnumerable<Models.ReSaleModel> GetAllReSale(int? ProductId, Double? CurrentPrice, Double? NewPrice);
+        IEnumerable<Models.ReSaleModel> GetAllReSale();
 
         ReSaleModel Delete(Models.ReSaleModel Resale);
 
