@@ -27,7 +27,7 @@ namespace Could_System_dev_ops.Controllers
         {
             if (ReSale == null)
             {
-                return NotFound();
+                return BadRequest();
             }
             _ReSaleRepo.CreateReSale(ReSale);
             return CreatedAtAction(nameof(getReSale), new { id = ReSale.ProductId }, ReSale);

@@ -35,7 +35,7 @@ namespace Could_System_dev_ops
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:44387/";
-                    options.Audience = "ReSale_Link";
+                    options.Audience = "Api_Link";
                 });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

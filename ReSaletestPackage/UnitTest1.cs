@@ -45,7 +45,7 @@ namespace ReSaletestPackage
         {
             Assert.IsNotNull(_reSaleService);
             Assert.IsNotNull(_reSaleController) ;
-            ReSaleModel ReSale = new ReSaleModel() { ProductId = 3, CurrentPrice = 11.4, NewPrice = 9.42, };
+            ReSaleModel ReSale = new ReSaleModel() { ProductId = 4, CurrentPrice = 11.4, NewPrice = 9.42, };
             Assert.IsNotNull(ReSale);
 
             ActionResult<ReSaleModel> result = _reSaleController.CreateReSale(ReSale);
@@ -68,31 +68,21 @@ namespace ReSaletestPackage
         }
 
         [Test]
-        public void CreateProduct_InvalidUser_ShouldObject()
+        public void CreateReSale_Invalid_ShouldObject()
         {
             
 
             Assert.IsNotNull(_reSaleService);
             Assert.IsNotNull(_reSaleController);
-            ReSaleModel ReSale = new ReSaleModel() { ProductId = 0, CurrentPrice = 0, NewPrice = 0, };
-            Assert.IsNotNull(ReSale);
+            ReSaleModel ReSale = null;
+            Assert.IsNull(ReSale);
 
             ActionResult<ReSaleModel> result = _reSaleController.CreateReSale(ReSale);
             Assert.IsNotNull(result);
 
             ActionResult ReSaleResult = result.Result;
-            Assert.AreEqual(ReSaleResult.GetType(), typeof(CreatedAtActionResult));
+            Assert.AreEqual(ReSaleResult.GetType(), typeof(BadRequestResult));
 
-            CreatedAtActionResult createdReSaleResult = (CreatedAtActionResult)ReSaleResult;
-            Assert.IsNotNull(createdReSaleResult);
-            Assert.AreEqual(createdReSaleResult.Value.GetType(), typeof(ReSaleModel));
-
-            ReSaleModel PeSaleValue = (ReSaleModel)createdReSaleResult.Value;
-            Assert.IsNotNull(PeSaleValue);
-
-            Assert.AreNotEqual(ReSale.ProductId, PeSaleValue.ProductId);
-            Assert.AreNotEqual(ReSale.CurrentPrice, PeSaleValue.CurrentPrice);
-            Assert.AreNotEqual(ReSale.NewPrice, PeSaleValue.NewPrice);
         }
     }
 }
