@@ -10,15 +10,15 @@ namespace Could_System_dev_ops.Repo
 
     {
 
-        ReSaleModel CreateReSale(Models.ReSaleModel ReSale);
+        ReSaleModel CreateReSale(ReSaleModel ReSale);
 
         ReSaleModel GetReSale(int id);
 
         IEnumerable<Models.ReSaleModel> GetAllReSale();
 
-        ReSaleModel Delete(Models.ReSaleModel Resale);
+        ReSaleModel Delete(ReSaleModel Resale);
 
-        ReSaleModel EditReSale(Models.ReSaleModel ReSale);
+        ReSaleModel EditReSale(ReSaleModel ReSale);
 
         
     }

@@ -30,7 +30,7 @@ namespace Could_System_dev_ops.Controllers
                 return BadRequest();
             }
             _ReSaleRepo.CreateReSale(ReSale);
-            return CreatedAtAction(nameof(getReSale), new { id = ReSale.ProductId }, ReSale);
+            return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);
         }
 
         [Route("EditReSale/{ReSale}")]
@@ -53,7 +53,7 @@ namespace Could_System_dev_ops.Controllers
 
         [Route("GetReSale/{id}")]
         [HttpGet]
-        public ActionResult<ReSaleModel> getReSale(int id)
+        public ActionResult<ReSaleModel> GetReSale(int id)
         {
             ReSaleModel createRaSale = _ReSaleRepo.GetReSale(id);
 
