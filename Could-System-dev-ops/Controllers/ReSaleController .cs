@@ -21,7 +21,7 @@ namespace Could_System_dev_ops.Controllers
         {
             _ReSaleRepo = ReSale;
         }
-        [Route("CreateReSale/{Resale}")]
+        [Route("CreateReSale/")]
         [HttpPost]
         public ActionResult<ReSaleModel> CreateReSale(ReSaleModel ReSale)
         {
@@ -33,13 +33,13 @@ namespace Could_System_dev_ops.Controllers
             return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);
         }
 
-        [Route("EditReSale/{ReSale}")]
+        [Route("EditReSale/")]
         [HttpPost]
         public ActionResult<ReSaleModel> EditReSale(ReSaleModel Resale)
         {
             if (Resale == null)
             {
-                return NotFound();
+                return BadRequest();
             }
             _ReSaleRepo.EditReSale(Resale);
             return Resale;
@@ -59,19 +59,19 @@ namespace Could_System_dev_ops.Controllers
 
             if (createRaSale == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             return createRaSale;
         }
 
-        [Route("DeleteResale/{ReSale}")]
+        [Route("DeleteResale/")]
         [HttpPost]
         public ActionResult<ReSaleModel> Delete(ReSaleModel ReSale)
         {
             if (ReSale == null)
             {
-                return NotFound();
+                return BadRequest();
             }
             
             _ReSaleRepo.Delete(ReSale);

@@ -33,9 +33,9 @@ namespace ReSaletestPackage
                 new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41, NewPrice = 310.42,}
             };
 
-
-            _reSaleController = new ReSaleController(_reSaleService);
             _reSaleService = new FakeReSaleRepo();
+            _reSaleController = new ReSaleController(_reSaleService);
+            
                 
         
         }
