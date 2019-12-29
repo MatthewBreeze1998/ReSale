@@ -29,6 +29,7 @@ namespace Could_System_dev_ops.Controllers
             {
                 return BadRequest();
             }
+            ReSale.CreationTime = DateTime.Now;
             _ReSaleRepo.CreateReSale(ReSale);
             return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);
         }

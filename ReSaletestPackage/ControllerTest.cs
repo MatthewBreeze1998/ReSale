@@ -45,7 +45,7 @@ namespace ReSaletestPackage
         {
             Assert.IsNotNull(_reSaleService);
             Assert.IsNotNull(_reSaleController) ;
-            ReSaleModel ReSale = new ReSaleModel() { ProductId = 4, CurrentPrice = 11.4, NewPrice = 9.42, };
+            ReSaleModel ReSale = new ReSaleModel() { ProductId = 4, CurrentPrice = 11.4, NewPrice = 9.42};
             Assert.IsNotNull(ReSale);
 
             ActionResult<ReSaleModel> result = _reSaleController.CreateReSale(ReSale);
@@ -64,7 +64,7 @@ namespace ReSaletestPackage
             Assert.AreEqual(ReSale.ProductId, PeSaleValue.ProductId);
             Assert.AreEqual(ReSale.CurrentPrice, PeSaleValue.CurrentPrice);
             Assert.AreEqual(ReSale.NewPrice, PeSaleValue.NewPrice);
-
+            Assert.AreEqual(ReSale.CreationTime, PeSaleValue.CreationTime);
         }
 
         [Test]

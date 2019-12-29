@@ -15,9 +15,9 @@ namespace Could_System_dev_ops.Repo
         {
             _ReSaleModelList = new List<ReSaleModel>()
             {
-                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42, },
-                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4, NewPrice = 9.42, },
-                new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41, NewPrice = 310.42,}
+                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42, CreationTime = new DateTime(2019,09,10,11,40,28)},
+                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4, NewPrice = 9.42, CreationTime = new DateTime(2019,09,14,10,40,28)},
+                new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41, NewPrice = 310.42, CreationTime =new DateTime(2019,09,20,9,40,28)}
             };
         }
 
