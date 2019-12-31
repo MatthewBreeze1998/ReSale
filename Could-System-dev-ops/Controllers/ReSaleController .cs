@@ -21,17 +21,19 @@ namespace Could_System_dev_ops.Controllers
         {
             _ReSaleRepo = ReSale;
         }
-        [Route("CreateReSale/")]
+        [Route("CreateReSale/")]// method route
         [HttpPost]
         public ActionResult<ReSaleModel> CreateReSale(ReSaleModel ReSale)
         {
             if (ReSale == null)
             {
                 return BadRequest();
-            }
-            ReSale.CreationTime = DateTime.Now;
-            _ReSaleRepo.CreateReSale(ReSale);
-            return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);
+            }// checks model is not null
+            ReSale.CreationTime = DateTime.Now;// creates new data time form current time
+           
+            _ReSaleRepo.CreateReSale(ReSale);// calls create resale
+            
+            return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);// returns a create at action
         }
 
         [Route("EditReSale/")]
@@ -41,42 +43,42 @@ namespace Could_System_dev_ops.Controllers
             if (Resale == null)
             {
                 return BadRequest();
-            }
-            _ReSaleRepo.EditReSale(Resale);
-            return Resale;
+            }// checks model is not null
+            _ReSaleRepo.EditReSale(Resale);// calls edit and passes Resale 
+            return Resale;// returns Resale
         }
-        [Route("AllReSale")]
+        [Route("AllReSale")]// route
         [HttpGet]
         public IEnumerable<ReSaleModel> GetAllReSale()
         {
-            return _ReSaleRepo.GetAllReSale();
+            return _ReSaleRepo.GetAllReSale();// returns list oof resale
         }
 
-        [Route("GetReSale/{id}")]
+        [Route("GetReSale/{id}")]//route
         [HttpGet]
         public ActionResult<ReSaleModel> GetReSale(int id)
         {
-            ReSaleModel createRaSale = _ReSaleRepo.GetReSale(id);
+            ReSaleModel createRaSale = _ReSaleRepo.GetReSale(id);// creates new model and sets it to the return of getresale
 
             if (createRaSale == null)
             {
                 return BadRequest();
-            }
+            }// if createRaSale reurn bad request 
 
-            return createRaSale;
+            return createRaSale;// if not null return createRaSale
         }
 
-        [Route("DeleteResale/")]
+        [Route("DeleteResale/")]// route
         [HttpPost]
         public ActionResult<ReSaleModel> Delete(ReSaleModel ReSale)
         {
             if (ReSale == null)
             {
                 return BadRequest();
-            }
+            }// checks not null
             
-            _ReSaleRepo.Delete(ReSale);
-            return ReSale;
+            _ReSaleRepo.Delete(ReSale);// calls function
+            return ReSale;// returns deleted data
         }
     }
 }
