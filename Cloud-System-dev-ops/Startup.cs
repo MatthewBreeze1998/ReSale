@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
-using Could_System_dev_ops.Models;
-using Could_System_dev_ops.Repo;
+using Cloud_System_dev_ops.Models;
+using Cloud_System_dev_ops.Repo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Could_System_dev_ops
+namespace Cloud_System_dev_ops
 {
     public class Startup
     {
@@ -29,7 +29,7 @@ namespace Could_System_dev_ops
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();
+            JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();  //Get rid of existing bearer tokens.
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
