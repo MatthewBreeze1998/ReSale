@@ -2,35 +2,39 @@
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 trigger:
 - master
+
 resources:
 - repo: self
+
 variables:
-tag: '$(Build.BuildId)'
-buildConfiguration: 'Release'
+  tag: '$(Build.BuildId)'
+  buildConfiguration: 'Release'
+
 stages:
 - stage: Build
-displayName: Build image
-jobs:
-- job: Build
-displayName: Build
-pool:
-vmImage: 'ubuntu-latest'
-steps:
-- task: DotNetCoreCLI@2
-displayName: 'Testing $(buildConfiguration)'
-inputs:
-command: test
-platform: '**/*test*/*csproj'
-arguments: '--configuration $(buildConfiguration)'
-- task: Docker@2
-displayName: Build and push an image
-inputs:
-command: buildAndPush
-repository: ThAmCo-ReSale
-dockerfile: '**/Dockerfile'
-containerRegistry: ThAmCoRegistry
-tags: |
-$(Build.BuildId)
-latest
+  displayName: Build image
+  jobs:
+    - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Testing $(buildConfiguration)'
+      inputs:
+        command: test
+        platform: '**/*test*/*csproj'
+        arguments: '--configuration $(buildConfiguration)'
+    - task: Docker@2
+      displayName: Build and push an image
+      inputs:
+        command: buildAndPush
+        repository: ThAmCo-ReSale
+        dockerfile: '**/Dockerfile'
+        containerRegistry: ThAmCoRegistry
+        tags: |
+          $(Build.BuildId)
+          latest
