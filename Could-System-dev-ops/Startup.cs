@@ -29,7 +29,7 @@ namespace Cloud_System_dev_ops
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();
+            JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();  //Get rid of existing bearer tokens.
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
