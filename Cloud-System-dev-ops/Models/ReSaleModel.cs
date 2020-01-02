@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cloud_System_dev_ops.Models
+namespace Could_System_dev_ops.Models
 {
     public class ReSaleModel
     {

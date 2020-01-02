@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cloud_System_dev_ops.Models;
+using Could_System_dev_ops.Models;
 
-namespace Cloud_System_dev_ops.Repo
+namespace Could_System_dev_ops.Repo
 {
     public class FakeReSaleRepo : IReSaleRepo
 

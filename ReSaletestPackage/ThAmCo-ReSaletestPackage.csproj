@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Could-System-dev-ops\ThAmCo-ReSale.csproj" />
+    <ProjectReference Include="..\Cloud-System-dev-ops\ThAmCo-ReSale.csproj" />
   </ItemGroup>
 
 </Project>

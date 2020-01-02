@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["Cloud-System-dev-ops/ThAmCo-ReSale.csproj", "Cloud-System-dev-ops/"]
-RUN dotnet restore "Cloud-System-dev-ops/ThAmCo-ReSale.csproj"
+COPY ["Could-System-dev-ops/ThAmCo-ReSale.csproj", "Could-System-dev-ops/"]
+RUN dotnet restore "Could-System-dev-ops/ThAmCo-ReSale.csproj"
 COPY . .
-WORKDIR "/src/Cloud-System-dev-ops"
+WORKDIR "/src/Could-System-dev-ops"
 RUN dotnet build "ThAmCo-ReSale.csproj" -c Release -o /app
 
 FROM build AS publish
