@@ -32,7 +32,7 @@ namespace ReSaletestPackage
             _reSaleController = new ReSaleController(_reSaleService);// controller constructor               
         }
         [Test]
-        public void CreateReSale_valid_shouldObject()
+        public void CreateReSale_valid_shouldObject()// testing create
         {
             Assert.IsNotNull(_reSaleService);// not null repo
             Assert.IsNotNull(_reSaleController) ;// not null controller
