@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo-ReSale", "Could-System-dev-ops\ThAmCo-ReSale.csproj", "{21DCD99E-B4B5-4433-AFC9-B8345C927162}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo-ReSaleTestPackage", "ReSaletestPackage\ThAmCo-ReSaleTestPackage.csproj", "{9A6EE41B-4C32-418B-8F36-B6D0D406752B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo-ReSaletestPackage", "ReSaletestPackage\ThAmCo-ReSaletestPackage.csproj", "{9A6EE41B-4C32-418B-8F36-B6D0D406752B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
