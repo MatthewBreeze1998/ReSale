@@ -13,7 +13,7 @@ namespace Cloud_System_dev_ops.Controllers
 {
     [Route("api/ReSale")]
     [ApiController]
-    [Authorize]
+    [Authorize(Policy = "Staffpol")]
     public class ReSaleController : Controller
     {
         private IReSaleRepo _ReSaleRepo;
