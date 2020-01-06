@@ -21,6 +21,7 @@ namespace Cloud_System_dev_ops.Controllers
         {
             _ReSaleRepo = ReSale;
         }
+        [Authorize(Policy = "Staffpol")]
         [Route("CreateReSale/")]// method route
         [HttpPost]
         public ActionResult<ReSaleModel> CreateReSale(ReSaleModel ReSale)
