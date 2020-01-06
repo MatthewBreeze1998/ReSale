@@ -38,7 +38,13 @@ namespace Cloud_System_dev_ops
                     options.Audience = "Api_Link";
                 });
 
-
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Manager", builder =>
+                {
+                    builder.RequireClaim("role", "Manager");
+                });
+            });
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Staffpol", builder =>

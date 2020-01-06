@@ -13,7 +13,7 @@ namespace Cloud_System_dev_ops.Controllers
 {
     [Route("api/ReSale")]
     [ApiController]
-    [Authorize(Policy = "Staffpol")]
+    
     public class ReSaleController : Controller
     {
         private IReSaleRepo _ReSaleRepo;
@@ -35,7 +35,7 @@ namespace Cloud_System_dev_ops.Controllers
             
             return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);// returns a create at action
         }
-
+        [Authorize(Policy = "Manager")]
         [Route("EditReSale/")]
         [HttpPost]
         public ActionResult<ReSaleModel> EditReSale(ReSaleModel Resale)
@@ -47,13 +47,14 @@ namespace Cloud_System_dev_ops.Controllers
             _ReSaleRepo.EditReSale(Resale);// calls edit and passes Resale 
             return Resale;// returns Resale
         }
+        [Authorize(Policy = "Staffpol")]
         [Route("AllReSale")]// route
         [HttpGet]
         public IEnumerable<ReSaleModel> GetAllReSale()
         {
             return _ReSaleRepo.GetAllReSale();// returns list oof resale
         }
-
+        [Authorize(Policy = "Staffpol")]
         [Route("GetReSale/{id}")]//route
         [HttpGet]
         public ActionResult<ReSaleModel> GetReSale(int id)
@@ -67,7 +68,7 @@ namespace Cloud_System_dev_ops.Controllers
 
             return createRaSale;// if not null return createRaSale
         }
-
+        [Authorize(Policy = "Manager")]
         [Route("DeleteResale/")]// route
         [HttpPost]
         public ActionResult<ReSaleModel> Delete(ReSaleModel ReSale)
