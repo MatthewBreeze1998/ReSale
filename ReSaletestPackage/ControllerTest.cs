@@ -24,9 +24,9 @@ namespace ReSaletestPackage
         {
             _ReSaleTestData = new List<ReSaleModel>
             {
-                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12, NewPrice = 110.42,},
-                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4, NewPrice = 9.42,},
-                new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41, NewPrice = 310.42,}
+                new ReSaleModel() {ProductId = 1,CurrentPrice = 123.12,},
+                new ReSaleModel() {ProductId = 2,CurrentPrice= 11.4 },
+                new ReSaleModel() {ProductId = 2,CurrentPrice = 341.41}
             };// test data
             _reSaleService = new FakeReSaleRepo();// repo constructor
             _reSaleController = new ReSaleController(_reSaleService);// controller constructor               
@@ -36,7 +36,7 @@ namespace ReSaletestPackage
         {
             Assert.IsNotNull(_reSaleService);// not null repo
             Assert.IsNotNull(_reSaleController) ;// not null controller
-            ReSaleModel ReSale = new ReSaleModel() { ProductId = 4, CurrentPrice = 11.4, NewPrice = 9.42};// new valid resale model
+            ReSaleModel ReSale = new ReSaleModel() { ProductId = 4, CurrentPrice = 11.4};// new valid resale model
             Assert.IsNotNull(ReSale);// resale not null
 
             ActionResult<ReSaleModel> result = _reSaleController.CreateReSale(ReSale);// result is the return of create resale
@@ -54,7 +54,6 @@ namespace ReSaletestPackage
 
             Assert.AreEqual(ReSale.ProductId, PeSaleValue.ProductId);//cehcks are equal
             Assert.AreEqual(ReSale.CurrentPrice, PeSaleValue.CurrentPrice);//cehcks are equal
-            Assert.AreEqual(ReSale.NewPrice, PeSaleValue.NewPrice);//cehcks are equal
             Assert.AreEqual(ReSale.CreationTime, PeSaleValue.CreationTime);//cehcks are equal
         }
 
