@@ -11,7 +11,7 @@ namespace Cloud_System_dev_ops.Models
 
         public Double CurrentPrice { get; set; }
 
-        public Double NewPrice { get; set; }
+
 
         public DateTime CreationTime { get ; set; }
    
