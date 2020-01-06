@@ -26,6 +26,7 @@ namespace Cloud_System_dev_ops.Controllers
         [HttpPost]
         public ActionResult<ReSaleModel> CreateReSale(ReSaleModel ReSale)
         {
+
             if (ReSale == null)
             {
                 return BadRequest();
