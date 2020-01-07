@@ -21,7 +21,7 @@ namespace Cloud_System_dev_ops.Migrations
 
             modelBuilder.Entity("Cloud_System_dev_ops.Models.ReSaleModel", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ReSaleId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -29,7 +29,9 @@ namespace Cloud_System_dev_ops.Migrations
 
                     b.Property<double>("CurrentPrice");
 
-                    b.HasKey("ProductId");
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("ReSaleId");
 
                     b.ToTable("ReSale");
                 });

@@ -65,7 +65,7 @@ namespace Cloud_System_dev_ops
             if (CurrentEnvironment.IsDevelopment())
             {
                
-                services.AddSingleton<IRepository<ReSaleModel>, FakeReSaleRepo>();
+                services.AddSingleton<IRepository<ReSaleModel>, EntityFrameWorkReSaleRepositry>();
             }
             else
             {

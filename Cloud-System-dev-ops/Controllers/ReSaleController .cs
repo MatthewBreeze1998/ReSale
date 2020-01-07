@@ -35,7 +35,7 @@ namespace Cloud_System_dev_ops.Controllers
            
             _ReSaleRepo.CreateObject(ReSale);// calls create resale
             
-            return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);// returns a create at action
+            return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ReSaleId }, ReSale);// returns a create at action
         }
         [Authorize(Policy = "Manager")]
         [Route("EditReSale/")]
@@ -47,12 +47,12 @@ namespace Cloud_System_dev_ops.Controllers
                 return BadRequest();
             }// checks model is not null
 
-            ReSaleModel livemodel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == Resale.ProductId);// checks for user
+            ReSaleModel livemodel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ReSaleId == Resale.ReSaleId);// checks for user
             if(livemodel == null)
             {
                 return BadRequest();
             }
-            
+            livemodel.ProductId = Resale.ProductId;
             livemodel.CurrentPrice = Resale.CurrentPrice;
             livemodel.CreationTime = Resale.CreationTime;
 
@@ -80,7 +80,7 @@ namespace Cloud_System_dev_ops.Controllers
                 return BadRequest();
             }
 
-            ReSaleModel RaSale = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == id);// creates new model and sets it to the return of getresale
+            ReSaleModel RaSale = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ReSaleId == id);// creates new model and sets it to the return of getresale
 
             if (RaSale == null)
             {
@@ -98,7 +98,7 @@ namespace Cloud_System_dev_ops.Controllers
             {
                 return BadRequest();
             }// checks not null
-            ReSaleModel LiveModel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == ReSale.ProductId);
+            ReSaleModel LiveModel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ReSaleId == ReSale.ReSaleId);
             
             if(LiveModel == null)
             {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cloud_System_dev_ops.Migrations
 {
     [DbContext(typeof(ReSaleDataBaseContext))]
-    [Migration("20200107223636_InitialMigrations")]
-    partial class InitialMigrations
+    [Migration("20200107235004_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Cloud_System_dev_ops.Migrations
 
             modelBuilder.Entity("Cloud_System_dev_ops.Models.ReSaleModel", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ReSaleId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -31,7 +31,9 @@ namespace Cloud_System_dev_ops.Migrations
 
                     b.Property<double>("CurrentPrice");
 
-                    b.HasKey("ProductId");
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("ReSaleId");
 
                     b.ToTable("ReSale");
                 });

@@ -10,11 +10,13 @@ namespace Cloud_System_dev_ops.Models
     {
 
         [Key]
+        public int ReSaleId { get; set; }
+
         public int ProductId { get; set; }
 
         public Double CurrentPrice { get; set; }
 
         public DateTime CreationTime { get ; set; }
-   
+
     }
 }

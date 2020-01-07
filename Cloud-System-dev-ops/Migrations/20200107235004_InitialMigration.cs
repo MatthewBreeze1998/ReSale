@@ -9,24 +9,25 @@ namespace Cloud_System_dev_ops.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "ReSale",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(nullable: false)
+                    ReSaleId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductId = table.Column<int>(nullable: false),
                     CurrentPrice = table.Column<double>(nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.ProductId);
+                    table.PrimaryKey("PK_ReSale", x => x.ReSaleId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                name: "ReSale");
         }
     }
 }
