@@ -20,29 +20,45 @@ namespace Cloud_System_dev_ops.Repo
         }
         public ReSaleModel CreateObject(ReSaleModel Object)
         {
-            _context.User.Add(Object);
+            _context.ReSale.Add(Object);
             _context.SaveChanges();
 
             return Object;
         }
-        public IEnumerable<ReSaleModel> GetObject()
-        {
-            return _context.User;
-        }
 
-        public bool UpdateObject(ReSaleModel Object)
+        public ReSaleModel DeleteObject(ReSaleModel Object)
         {
             try
             {
-                _context.User.Update(Object);
+                _context.ReSale.Remove(Object);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                return false;
+                return Object;
             }
 
-            return true;
+            return null;
+        }
+
+   
+        public IEnumerable<ReSaleModel> GetObjects()
+        {
+            return _context.ReSale;
+        }
+        public ReSaleModel UpdateObject(ReSaleModel Object)
+        {
+            try
+            {
+                _context.ReSale.Update(Object);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return Object;
         }
     }
 }

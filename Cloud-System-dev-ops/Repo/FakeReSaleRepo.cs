@@ -6,7 +6,7 @@ using Cloud_System_dev_ops.Models;
 
 namespace Cloud_System_dev_ops.Repo
 {
-    public class FakeReSaleRepo : IReSaleRepo
+    public class FakeReSaleRepo : IRepository<ReSaleModel>
 
     {
 
@@ -21,34 +21,47 @@ namespace Cloud_System_dev_ops.Repo
             };// data
         }
 
-        public ReSaleModel CreateReSale(ReSaleModel ReSale)
+        public ReSaleModel CreateObject(ReSaleModel ReSale)
         {
+            ReSale.ProductId = GetNextId();
             _ReSaleModelList.Add(ReSale);// add new model to list
             return ReSale;// returns new resale model
         }
 
-        public ReSaleModel Delete(ReSaleModel Resale)
+        public ReSaleModel DeleteObject(ReSaleModel Resale)
         {
-            _ReSaleModelList.Remove(_ReSaleModelList.FirstOrDefault(x => x.ProductId == Resale.ProductId));// removes from the list first or default where the id matches
-            return Resale;// return deleted data
+            _ReSaleModelList.Remove(_ReSaleModelList.FirstOrDefault(x => x.ProductId == Resale.ProductId));
+            return Resale;
         }
 
-        public ReSaleModel EditReSale(ReSaleModel ReSale)
+        public ReSaleModel UpdateObject(ReSaleModel ReSale)
         {
-            _ReSaleModelList[_ReSaleModelList.IndexOf(_ReSaleModelList.FirstOrDefault(x => x.ProductId == ReSale.ProductId))] = ReSale; // replaced the data entry of where the index id matches with the new data entry
-            return ReSale;// return edited model
+
+            ReSaleModel inMemoryModel = _ReSaleModelList.FirstOrDefault(X => X.ProductId == ReSale.ProductId);
+            if(inMemoryModel == null)
+            {
+                return null;
+            }
+            try
+            {
+                int index = _ReSaleModelList.IndexOf(inMemoryModel);
+                _ReSaleModelList[index] = ReSale;
+                return ReSale;
+            }
+            catch(Exception ex)
+            {
+                return null; 
+            }
         }
 
-        public ReSaleModel GetReSale(int id)
+        public IEnumerable<ReSaleModel>  GetObjects()
         {
-            return _ReSaleModelList.FirstOrDefault(x => id == x.ProductId);// return the matching product
+            return _ReSaleModelList.AsEnumerable<ReSaleModel>();
         }
 
-        public IEnumerable<ReSaleModel> GetAllReSale()
+        private int GetNextId()
         {
-            return _ReSaleModelList.AsEnumerable<ReSaleModel>();// return all data entrys from list
+            return (_ReSaleModelList == null || _ReSaleModelList.Count() == 0) ? 1 : _ReSaleModelList.Max(x => x.ProductId) + 1;
         }
-
-
     }
 }

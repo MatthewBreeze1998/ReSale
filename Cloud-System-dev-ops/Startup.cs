@@ -14,17 +14,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Cloud_System_dev_ops
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment CurrentEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,7 +61,16 @@ namespace Cloud_System_dev_ops
                 String connection = Configuration.GetConnectionString("UserConnectionString");
                 options.UseSqlServer(connection);
             });
-            services.AddSingleton<IReSaleRepo, FakeReSaleRepo>();
+            
+            if (CurrentEnvironment.IsDevelopment())
+            {
+               
+                services.AddSingleton<IRepository<ReSaleModel>, FakeReSaleRepo>();
+            }
+            else
+            {
+                services.AddSingleton<IRepository<ReSaleModel>, EntityFrameWorkReSaleRepositry>();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

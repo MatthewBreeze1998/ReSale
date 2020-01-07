@@ -12,7 +12,7 @@ namespace ReSaletestPackage
     {
         private HttpClient _Client;
         private ReSaleController _reSaleController;
-        private IReSaleRepo _reSaleService;
+        private IRepository<ReSaleModel> _reSaleService;
         private List<ReSaleModel> _ReSaleTestData;
 
        public ReSaleControllerTest()

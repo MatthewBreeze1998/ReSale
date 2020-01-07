@@ -16,8 +16,8 @@ namespace Cloud_System_dev_ops.Controllers
     
     public class ReSaleController : Controller
     {
-        private IReSaleRepo _ReSaleRepo;
-        public ReSaleController(IReSaleRepo ReSale)
+        private IRepository<ReSaleModel> _ReSaleRepo;
+        public ReSaleController(IRepository<ReSaleModel> ReSale)
         {
             _ReSaleRepo = ReSale;
         }
@@ -33,7 +33,7 @@ namespace Cloud_System_dev_ops.Controllers
             }// checks model is not null
             ReSale.CreationTime = DateTime.Now;// creates new data time form current time
            
-            _ReSaleRepo.CreateReSale(ReSale);// calls create resale
+            _ReSaleRepo.CreateObject(ReSale);// calls create resale
             
             return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ProductId }, ReSale);// returns a create at action
         }
@@ -46,7 +46,21 @@ namespace Cloud_System_dev_ops.Controllers
             {
                 return BadRequest();
             }// checks model is not null
-            _ReSaleRepo.EditReSale(Resale);// calls edit and passes Resale 
+
+            ReSaleModel livemodel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == Resale.ProductId);// checks for user
+            if(livemodel == null)
+            {
+                return BadRequest();
+            }
+            
+            livemodel.CurrentPrice = Resale.CurrentPrice;
+            livemodel.CreationTime = Resale.CreationTime;
+
+            livemodel =  _ReSaleRepo.UpdateObject(Resale);// calls edit and passes Resale 
+            if (livemodel == null)
+            {
+                return Conflict();
+            }
             return Resale;// returns Resale
         }
         [Authorize(Policy = "Staffpol")]
@@ -54,21 +68,26 @@ namespace Cloud_System_dev_ops.Controllers
         [HttpGet]
         public IEnumerable<ReSaleModel> GetAllReSale()
         {
-            return _ReSaleRepo.GetAllReSale();// returns list oof resale
+            return _ReSaleRepo.GetObjects();// returns list oof resale
         }
         [Authorize(Policy = "Staffpol")]
         [Route("GetReSale/{id}")]//route
         [HttpGet]
-        public ActionResult<ReSaleModel> GetReSale(int id)
+        public ActionResult<ReSaleModel> GetReSale(int? id)
         {
-            ReSaleModel createRaSale = _ReSaleRepo.GetReSale(id);// creates new model and sets it to the return of getresale
+            if(id == null)
+            {
+                return BadRequest();
+            }
 
-            if (createRaSale == null)
+            ReSaleModel RaSale = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == id);// creates new model and sets it to the return of getresale
+
+            if (RaSale == null)
             {
                 return BadRequest();
             }// if createRaSale reurn bad request 
 
-            return createRaSale;// if not null return createRaSale
+            return RaSale;// if not null return createRaSale
         }
         [Authorize(Policy = "Manager")]
         [Route("DeleteResale/")]// route
@@ -79,9 +98,21 @@ namespace Cloud_System_dev_ops.Controllers
             {
                 return BadRequest();
             }// checks not null
+            ReSaleModel LiveModel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ProductId == ReSale.ProductId);
             
-            _ReSaleRepo.Delete(ReSale);// calls function
-            return ReSale;// returns deleted data
+            if(LiveModel == null)
+            {
+                return BadRequest();
+            }
+
+            LiveModel = _ReSaleRepo.DeleteObject(LiveModel);
+
+            if(LiveModel != null)
+            {
+                return Conflict();
+            }
+                
+            return LiveModel;// returns deleted data
         }
     }
 }
