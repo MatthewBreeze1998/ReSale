@@ -44,14 +44,12 @@ namespace Cloud_System_dev_ops
                 {
                     builder.RequireClaim("role", "Manager");
                 });
-            });
-            services.AddAuthorization(options =>
-            {
                 options.AddPolicy("Staffpol", builder =>
                 {
                     builder.RequireClaim("role", "Staff", "Manager");
                 });
             });
+         
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
