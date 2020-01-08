@@ -30,7 +30,7 @@ namespace Cloud_System_dev_ops.Repo
 
         public ReSaleModel DeleteObject(ReSaleModel Resale)
         {
-            _ReSaleModelList.Remove(_ReSaleModelList.FirstOrDefault(x => x.ProductId == Resale.ReSaleId));
+            _ReSaleModelList.Remove(_ReSaleModelList.FirstOrDefault(x => x.ReSaleId == Resale.ReSaleId));
             return Resale;
         }
 
