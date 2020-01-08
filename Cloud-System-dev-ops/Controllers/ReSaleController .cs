@@ -61,7 +61,7 @@ namespace Cloud_System_dev_ops.Controllers
             {
                 return Conflict();
             }
-            return Resale;// returns Resale
+            return livemodel;// returns Resale
         }
         [Authorize(Policy = "Staffpol")]
         [Route("AllReSale")]// route
