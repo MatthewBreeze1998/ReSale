@@ -57,6 +57,7 @@ namespace Cloud_System_dev_ops.Controllers
             livemodel.CreationTime = Resale.CreationTime;
 
             livemodel =  _ReSaleRepo.UpdateObject(livemodel);// calls edit and passes Resale 
+           
             if (livemodel == null)
             {
                 return Conflict();
