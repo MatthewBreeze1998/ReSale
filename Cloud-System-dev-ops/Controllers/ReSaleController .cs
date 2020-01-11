@@ -37,33 +37,32 @@ namespace Cloud_System_dev_ops.Controllers
             
             return CreatedAtAction(nameof(GetReSale), new { id = ReSale.ReSaleId }, ReSale);// returns a create at action
         }
-        [Authorize(Policy = "Manager")]
-        [Route("EditReSale/")]
-        [HttpPost]
-        public ActionResult<ReSaleModel> EditReSale(ReSaleModel Resale)
-        {
-            if (Resale == null)
-            {
-                return BadRequest();
-            }// checks model is not null
+        //[Authorize(Policy = "Manager")]
+        //[Route("EditReSale/")]
+        //[HttpPost]
+        //public ActionResult<ReSaleModel> EditReSale(ReSaleModel Resale)
+        //{
+        //    if (Resale == null)
+        //    {
+        //        return BadRequest();
+        //    }// checks model is not null
 
-            ReSaleModel livemodel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ReSaleId == Resale.ReSaleId);// checks for user
-            if(livemodel == null)
-            {
-                return BadRequest();
-            }
-            livemodel.ProductId = Resale.ProductId;
-            livemodel.CurrentPrice = Resale.CurrentPrice;
-            livemodel.CreationTime = Resale.CreationTime;
-
-            livemodel =  _ReSaleRepo.UpdateObject(livemodel);// calls edit and passes Resale 
+        //    ReSaleModel livemodel = _ReSaleRepo.GetObjects().FirstOrDefault(x => x.ReSaleId == Resale.ReSaleId);// checks for user
+        //    if(livemodel == null)
+        //    {
+        //        return BadRequest();
+        //    }
+            
+        //    livemodel.CurrentPrice = Resale.CurrentPrice;
            
-            if (livemodel == null)
-            {
-                return Conflict();
-            }
-            return livemodel;// returns Resale
-        }
+        //    livemodel =  _ReSaleRepo.UpdateObject(livemodel);// calls edit and passes Resale 
+           
+        //    if (livemodel == null)
+        //    {
+        //        return Conflict();
+        //    }
+        //    return livemodel;// returns Resale
+        //}
         [Authorize(Policy = "Staffpol")]
         [Route("AllReSale")]// route
         [HttpGet]

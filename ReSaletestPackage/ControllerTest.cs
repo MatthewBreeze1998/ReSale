@@ -75,43 +75,43 @@ namespace ReSaletestPackage
             Assert.AreEqual(ReSaleResult.GetType(), typeof(BadRequestResult));// ReSaleResult is of type bad request
 
         }
-        [Test]
-        public void EditReSale_valid_ShouldObject()
-        {
-            Assert.IsNotNull(_reSaleService);// not null repo
-            Assert.IsNotNull(_reSaleController);// not null controller
-            ReSaleModel reSale = new ReSaleModel() { ReSaleId = 1, ProductId = 1, CurrentPrice = 123.12, CreationTime = new DateTime(2019, 09, 10, 11, 40, 28) };
-            Assert.IsNotNull(reSale);//chekcs not null 
+        //[Test]
+        //public void EditReSale_valid_ShouldObject()
+        //{
+        //    Assert.IsNotNull(_reSaleService);// not null repo
+        //    Assert.IsNotNull(_reSaleController);// not null controller
+        //    ReSaleModel reSale = new ReSaleModel() { ReSaleId = 1, ProductId = 1, CurrentPrice = 123.12, CreationTime = new DateTime(2019, 09, 10, 11, 40, 28) };
+        //    Assert.IsNotNull(reSale);//chekcs not null 
 
-            reSale.CurrentPrice = 110.00;// change lastname
+        //    reSale.CurrentPrice = 110.00;// change lastname
 
-            ActionResult<ReSaleModel> result = _reSaleController.EditReSale(reSale); //calls edit user and set to result 
-            Assert.IsNotNull(result);// checks not null
-            Assert.IsNotNull(result.Value);
+        //    ActionResult<ReSaleModel> result = _reSaleController.EditReSale(reSale); //calls edit user and set to result 
+        //    Assert.IsNotNull(result);// checks not null
+        //    Assert.IsNotNull(result.Value);
 
-            ReSaleModel updatedUser = result.Value;// sets updatedUser to result.Value
-            Assert.IsNotNull(updatedUser);   // checks updatedUser not null 
+        //    ReSaleModel updatedUser = result.Value;// sets updatedUser to result.Value
+        //    Assert.IsNotNull(updatedUser);   // checks updatedUser not null 
 
-            Assert.AreEqual(reSale.CurrentPrice, updatedUser.CurrentPrice);// checks the name has changed 
+        //    Assert.AreEqual(reSale.CurrentPrice, updatedUser.CurrentPrice);// checks the name has changed 
 
-        }
+        //}
 
-        [Test]
-        public void EditReSale_invalid_ShouldObject()
-        {
+        //[Test]
+        //public void EditReSale_invalid_ShouldObject()
+        //{
 
-            Assert.IsNotNull(_reSaleService);// not null repo
-            Assert.IsNotNull(_reSaleController);// not null controller
-            ReSaleModel reSale = new ReSaleModel() { ProductId = 1, CurrentPrice = 123.12, };
-            Assert.IsNotNull(reSale);//chekcs not null 
+        //    Assert.IsNotNull(_reSaleService);// not null repo
+        //    Assert.IsNotNull(_reSaleController);// not null controller
+        //    ReSaleModel reSale = new ReSaleModel() { ProductId = 1, CurrentPrice = 123.12, };
+        //    Assert.IsNotNull(reSale);//chekcs not null 
 
 
-            ActionResult<ReSaleModel> result = _reSaleController.EditReSale(reSale);// sets result to the edit user action
-            Assert.IsNotNull(result);// checks its not null
+        //    ActionResult<ReSaleModel> result = _reSaleController.EditReSale(reSale);// sets result to the edit user action
+        //    Assert.IsNotNull(result);// checks its not null
 
-            ActionResult usersResult = result.Result;// sets usersResult to the result.Result
-            Assert.AreEqual(usersResult.GetType(), typeof(BadRequestResult));// checks  usersResult        
-        }
+        //    ActionResult usersResult = result.Result;// sets usersResult to the result.Result
+        //    Assert.AreEqual(usersResult.GetType(), typeof(BadRequestResult));// checks  usersResult        
+        //}
 
         [Test]
         public void GetReSale_valid_shouldObject()
@@ -132,6 +132,7 @@ namespace ReSaletestPackage
             Assert.AreEqual(reSale.CurrentPrice, resaleResult.CurrentPrice);//checks if it matches
 
         }
+        
 
         [Test]
         public void GetReSale_invalid_shouldObject()
